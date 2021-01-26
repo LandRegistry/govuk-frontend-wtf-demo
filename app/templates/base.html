@@ -1,0 +1,56 @@
+{% extends 'govuk_frontend_jinja/template.html' %}
+
+{%- from 'govuk_frontend_jinja/components/notification-banner/macro.html' import govukNotificationBanner -%}
+
+{% set assetPath = url_for('static', filename='').rstrip('/') %}
+
+{% block pageTitle %}GOV.UK Frontend WTForms{% endblock %}
+
+{% block head %}
+  <meta name="description" content="GOV.UK Frontend WTForms">
+  <meta name="keywords" content="GOV.UK, govuk, gov, government, uk, frontend, ui, user interface, jinja, python, flask, port, template, templating, macro, component, design system, html">
+  <meta name="author" content="HM Land Registry">
+  <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-3.10.2.min.css') }}" /><!--<![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-ie8-3.10.2.min.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    'homepageUrl': url_for('index'),
+    'serviceName': "GOV.UK Frontend WTForms",
+    'serviceUrl': url_for('index')
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    'meta': {
+      'items': [
+        {
+          'href': "https://github.com/LandRegistry/govuk-frontend-wtf",
+          'text': "Source"
+        },
+        {
+          'href': "https://github.com/LandRegistry/govuk-frontend-wtf/actions",
+          'text': "Build"
+        },
+        {
+          'href': "https://pypi.org/project/govuk-frontend-wtf/",
+          'text': "Package"
+        },
+        {
+          'href': "https://github.com/LandRegistry/govuk-frontend-wtf-demo",
+          'text': "Demo"
+        }
+      ],
+      'html': 'Built by <a href="https://www.gov.uk/government/organisations/land-registry" class="govuk-footer__link">HM Land Registry</a> and <a href="https://github.com/LandRegistry/govuk-frontend-wtf/graphs/contributors" class="govuk-footer__link">Contributors</a>'
+    }
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <!--[if gt IE 8]><!-->
+  <script src="{{ url_for('static', filename='govuk-frontend-3.10.2.min.js') }}"> </script>
+  <script>window.GOVUKFrontend.initAll()</script>
+  <!--<![endif]-->
+{% endblock %}
