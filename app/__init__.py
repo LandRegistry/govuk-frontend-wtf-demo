@@ -1,9 +1,11 @@
+from config import Config
 from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
 from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
 
 app = Flask(__name__, static_url_path="/assets")
+app.config.from_object(Config)
 
 app.jinja_loader = ChoiceLoader(
     [
