@@ -10,7 +10,7 @@ def index():
 
 
 @app.route("/forms/bank-details", methods=["GET", "POST"])
-def signup():
+def bank_details():
     form = BankDetailsForm()
     if form.validate_on_submit():
         return redirect(url_for("index"))
