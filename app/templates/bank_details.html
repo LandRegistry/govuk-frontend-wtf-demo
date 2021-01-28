@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 
-{% block pageTitle %}{% if form.errors %}Error: {% endif %}Bank details – GOV.UK Frontend WTForms{% endblock %}
+{%- from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink -%}
+
+{% block pageTitle %}{% if form.errors %}Error: {% endif %}Bank details – GOV.UK Frontend WTForms Demo{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    'text': "Back",
+    'href': url_for('index')
+  }) }}
+{% endblock %}
 
 {% block content %}
 {% if form.errors %}
