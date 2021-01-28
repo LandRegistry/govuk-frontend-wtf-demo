@@ -4,11 +4,11 @@
 
 {% set assetPath = url_for('static', filename='').rstrip('/') %}
 
-{% block pageTitle %}GOV.UK Frontend WTForms{% endblock %}
+{% block pageTitle %}GOV.UK Frontend WTForms Demo{% endblock %}
 
 {% block head %}
-  <meta name="description" content="GOV.UK Frontend WTForms">
-  <meta name="keywords" content="GOV.UK, govuk, gov, government, uk, frontend, ui, user interface, jinja, python, flask, port, template, templating, macro, component, design system, html">
+  <meta name="description" content="GOV.UK Frontend WTForms Demo">
+  <meta name="keywords" content="GOV.UK, govuk, gov, government, uk, frontend, ui, user interface, jinja, python, flask, port, template, templating, macro, component, design system, html, forms, wtf, wtforms, widget, widgets, demo, example">
   <meta name="author" content="HM Land Registry">
   <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-3.10.2.min.css') }}" /><!--<![endif]-->
   <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-ie8-3.10.2.min.css') }}" /><![endif]-->
@@ -17,7 +17,7 @@
 {% block header %}
   {{ govukHeader({
     'homepageUrl': url_for('index'),
-    'serviceName': "GOV.UK Frontend WTForms",
+    'serviceName': "GOV.UK Frontend WTForms Demo",
     'serviceUrl': url_for('index')
   }) }}
 {% endblock %}
