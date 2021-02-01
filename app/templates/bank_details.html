@@ -13,14 +13,13 @@
 
 {% block content %}
 {% if form.errors %}
-<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
-    data-module="govuk-error-summary">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
     <div class="govuk-error-summary__body">
         <ul class="govuk-list govuk-error-summary__list">
             {% for field, errors in form.errors.items() %}
                 {% for error in errors %}
-                    <li><a href="#{{field}}">{{error}}</a></li>    
+                    <li><a href="#{{field}}">{{error}}</a></li>
                 {% endfor %}
             {% endfor %}
         </ul>
@@ -33,6 +32,7 @@
     <div class="govuk-grid-column-two-thirds">
         <form action="" method="post" novalidate>
             {{form.csrf_token}}
+            
             <!--Name on the account-->
             <div class="govuk-form-group {% if form.name_on_the_account.errors %}govuk-form-group--error{% endif %}">
                 {{form.name_on_the_account.label(class="govuk-label")}}
