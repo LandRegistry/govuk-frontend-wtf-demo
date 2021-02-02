@@ -1,7 +1,7 @@
 from flask import redirect, render_template, url_for
 
 from app import app
-from app.forms import BankDetailsForm, CreateAccountForm
+from app.basic_forms import BankDetailsForm, CreateAccountForm
 
 
 @app.route("/")
