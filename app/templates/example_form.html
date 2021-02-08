@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink -%}
+{%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary -%}
 
-{% block pageTitle %}Example form – GOV.UK Frontend WTForms Demo{% endblock %}
+{% block pageTitle %}{%- if form and form.errors %}Error: {% endif -%}Example form – GOV.UK Frontend WTForms Demo{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -12,6 +13,10 @@
 {% endblock %}
 
 {% block content %}
+{% if form.errors %}
+    {{ govukErrorSummary(wtforms_errors(form)) }}
+{% endif %}
+
 <h1 class="govuk-heading-l">Example form</h1>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -19,6 +24,8 @@
             {{form.csrf_token}}
             
             {{form.full_name}}
+
+            {{form.submit}}
         </form>
     </div>
 </div>
