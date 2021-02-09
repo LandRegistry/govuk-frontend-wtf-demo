@@ -3,7 +3,7 @@ flask-compress==1.8.0
 flask-talisman==0.7.0
 flask-wtf==0.14.3               # Only required before package is published to main PyPI
 flask==1.1.2
-govuk-frontend-jinja==1.1.0     # Only required before package is published to main PyPI
+govuk-frontend-jinja==1.2.0     # Only required before package is published to main PyPI
 # govuk-frontend-wtf==0.1.0     # Will be required after package is published to main PyPI
 gunicorn==20.0.4
 python-dotenv==0.15.0
