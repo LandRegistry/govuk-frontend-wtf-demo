@@ -22,10 +22,30 @@
     <div class="govuk-grid-column-two-thirds">
         <form action="" method="post" novalidate>
             {{form.csrf_token}}
+            
             {{form.name_on_the_account(spellcheck="false")}}
-            {{form.sort_code(class="govuk-input--width-5", spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
-            {{form.account_number(class="govuk-input--width-10", spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
-            {{form.roll_number(class="govuk-input--width-10", spellcheck="false")}}
+            
+            {{form.sort_code(params={
+              'classes': 'govuk-input--width-5',
+              'hint': {
+                'text': form.sort_code.description
+              }
+            }, spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
+            
+            {{form.account_number(params={
+              'classes': 'govuk-input--width-10',
+              'hint': {
+                'text': form.account_number.description
+              }
+            }, spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
+            
+            {{form.roll_number(params={
+              'classes': 'govuk-input--width-10',
+              'hint': {
+                'text': form.roll_number.description
+              }
+            }, hint="description", spellcheck="false")}}
+            
             {{form.submit}}
         </form>
     </div>
