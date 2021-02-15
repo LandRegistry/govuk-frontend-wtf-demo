@@ -1,3 +1,4 @@
+deepmerge==0.1.1                # Remove after package published to main PyPI
 email_validator==1.1.2
 flask-compress==1.8.0
 flask-talisman==0.7.0

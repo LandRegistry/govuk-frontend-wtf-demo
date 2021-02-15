@@ -6,6 +6,7 @@
 #
 brotli==1.0.9             # via flask-compress
 click==7.1.2              # via flask
+deepmerge==0.1.1          # via -r requirements.in
 dnspython==2.1.0          # via email-validator
 email_validator==1.1.2    # via -r requirements.in
 flask-compress==1.8.0     # via -r requirements.in
