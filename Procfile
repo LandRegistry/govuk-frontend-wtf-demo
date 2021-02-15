@@ -1,1 +1,1 @@
-web: ./build.sh; gunicorn app:app --log-file -
+web: ./build.sh; pip install -i https://test.pypi.org/simple/ govuk-frontend-wtf; gunicorn app:app --log-file -
