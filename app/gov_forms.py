@@ -4,13 +4,6 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired, Length, Optional, Regexp
 
 
-class ExampleForm(FlaskForm):
-    full_name = StringField(
-        "Full name", widget=GovTextInput(), validators=[InputRequired(message="Enter your full name")]
-    )
-    submit = SubmitField("Continue", widget=GovSubmitInput())
-
-
 class GovBankDetailsForm(FlaskForm):
     name_on_the_account = StringField(
         "Name on the account",
