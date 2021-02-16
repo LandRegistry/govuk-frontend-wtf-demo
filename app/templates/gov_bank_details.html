@@ -23,28 +23,37 @@
         <form action="" method="post" novalidate>
             {{form.csrf_token}}
             
-            {{form.name_on_the_account(spellcheck="false")}}
+            {{form.name_on_the_account(params={
+              'spellcheck': false
+            })}}
             
             {{form.sort_code(params={
               'classes': 'govuk-input--width-5',
               'hint': {
                 'text': form.sort_code.description
-              }
-            }, spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
+              },
+              'inputmode': 'numeric',
+              'pattern': '[0-9]*',
+              'spellcheck': false
+            })}}
             
             {{form.account_number(params={
               'classes': 'govuk-input--width-10',
               'hint': {
                 'text': form.account_number.description
-              }
-            }, spellcheck="false", pattern="[0-9]*", inputmode="numeric")}}
+              },
+              'inputmode': 'numeric',
+              'pattern': '[0-9]*',
+              'spellcheck': false
+            })}}
             
             {{form.roll_number(params={
               'classes': 'govuk-input--width-10',
               'hint': {
                 'text': form.roll_number.description
-              }
-            }, hint="description", spellcheck="false")}}
+              },
+              'spellcheck': false
+            })}}
             
             {{form.submit}}
         </form>
