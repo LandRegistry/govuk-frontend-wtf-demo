@@ -1,4 +1,4 @@
-from flask import redirect, render_template, url_for
+from flask import flash, redirect, render_template, url_for
 
 from app import app
 from app.basic_forms import BankDetailsForm, CreateAccountForm
@@ -14,6 +14,7 @@ def index():
 def bank_details():
     form = BankDetailsForm()
     if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("bank_details.html", form=form)
 
@@ -22,6 +23,7 @@ def bank_details():
 def create_account():
     form = CreateAccountForm()
     if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("create_account.html", form=form)
 
@@ -30,6 +32,7 @@ def create_account():
 def gov_bank_details():
     form = GovBankDetailsForm()
     if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("gov_bank_details.html", form=form)
 
@@ -38,6 +41,7 @@ def gov_bank_details():
 def gov_create_account():
     form = GovCreateAccountForm()
     if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("gov_create_account.html", form=form)
 
