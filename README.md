@@ -8,7 +8,6 @@ Demo Flask app using [GOV.UK Frontend WTForms Widgets](https://github.com/LandRe
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-pip install -i https://test.pypi.org/simple/ govuk-frontend-wtf
 ./build.sh
 flask run
 ```
