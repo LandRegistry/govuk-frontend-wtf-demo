@@ -18,28 +18,18 @@
         <p class="govuk-body-l">
             This is a simple <a href="https://www.python.org/" class="govuk-link">Python</a> application
             using the <a href="https://flask.palletsprojects.com/en/1.1.x/" class="govuk-link">Flask</a> framework that
-            demonstrates the <a href="https://wtforms.readthedocs.io/en/2.3.x/" class="govuk-link">WTForms</a> port of
+            demonstrates using <a href="https://wtforms.readthedocs.io/en/2.3.x/" class="govuk-link">WTForms</a> widgets with
             <a href="https://frontend.design-system.service.gov.uk/" class="govuk-link">GOV.UK Frontend</a>.
         </p>
-        {{ govukNotificationBanner(
-        {'html': '<h3 class="govuk-notification-banner__heading">This is work in progress</h3>
-        <p class="govuk-body">This app is being developed alongside a new package to help test and prove it.
-            Some parts of it may not work correctly yet, or may be changed and removed without warning.</p>'}
-        ) }}
 
-        {{ govukInsetText({'html': '<p class="govuk-body">GOV.UK Frontend WTForms uses <a href="https://govuk-frontend-jinja.herokuapp.com/" class="govuk-link">GOV.UK Frontend Jinja</a> to provide a complete set of thoroughly tested and 100% compliant Jinja macros. These component macros can be used throughout your Python projects alongside GOV.UK Frontend WTForms, or standalone.</p>'} ) }}
-        
-        <h2 class="govuk-heading-l">Forms</h2>
-        <h3 class="govuk-heading-m">Created with basic WTForms fields</h3>
+        <p class="govuk-body"><a href="https://github.com/LandRegistry/govuk-frontend-wtf" class="govuk-link">GOV.UK Frontend WTForms</a> is a set of <a href="https://wtforms.readthedocs.io/en/2.3.x/widgets/" class="govuk-link">WTForms widgets</a> used to render <a href="https://wtforms.readthedocs.io/en/2.3.x/fields/" class="govuk-link">WTForm fields</a> using <a href="https://design-system.service.gov.uk/" class="govuk-link">GOV.UK Frontend</a> component styling. This is done using Jinja macros from the <a href="https://github.com/LandRegistry/govuk-frontend-jinja" class="govuk-link">GOV.UK Frontend Jinja</a> port of the original GOV.UK Frontend Nunjucks macros.</p>
+        <p class="govuk-body">The ported component macros are kept up-to-date with GOV.UK Frontend releases, are thoroughly tested and produce 100% equivalent markup. They can be used throughout your Python projects alongside GOV.UK Frontend WTForms, or standalone.</p>
+        <p class="govuk-body">This approach also renders the associated error messages in the appropriate place, shows the error summary component at the top of the page and sets all related accessibility ARIA attributes. Adding the appropriate <a href="https://github.com/LandRegistry/govuk-frontend-wtf#widgets" class="govuk-link">widget</a> to your existing form Python class, along with far simpler templates, makes it quick and easy to produce fully GOV.UK compliant forms.</p>
+
+        <h2 class="govuk-heading-l">Example forms</h2>
         <ul class="govuk-list govuk-list--bullet">
             <li><a class="govuk-link" href="{{ url_for('bank_details') }}">Bank details</a></li>
             <li><a class="govuk-link" href="{{ url_for('create_account') }}">Create an account</a></li>
-        </ul>
-
-        <h3 class="govuk-heading-m">Created with GOV.UK Frontend WTForms Widgets</h3>
-        <ul class="govuk-list govuk-list--bullet">
-            <li><a class="govuk-link" href="{{ url_for('gov_bank_details') }}">Bank details</a></li>
-            <li><a class="govuk-link" href="{{ url_for('gov_create_account') }}">Create an account</a></li>
         </ul>
     </div>
 </div>
