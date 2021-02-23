@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink -%}
+{%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary -%}
 
-{% block pageTitle %}{% if form.errors %}Error: {% endif %}Bank details – GOV.UK Frontend WTForms Demo{% endblock %}
+{% block pageTitle %}{%- if form and form.errors %}Error: {% endif -%}Bank details – GOV.UK Frontend WTForms Demo{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -13,18 +14,7 @@
 
 {% block content %}
 {% if form.errors %}
-<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
-    <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
-    <div class="govuk-error-summary__body">
-        <ul class="govuk-list govuk-error-summary__list">
-            {% for field, errors in form.errors.items() %}
-                {% for error in errors %}
-                    <li><a href="#{{field}}">{{error}}</a></li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+    {{ govukErrorSummary(wtforms_errors(form)) }}
 {% endif %}
 
 <h1 class="govuk-heading-l">Bank or building society account details</h1>
@@ -33,70 +23,39 @@
         <form action="" method="post" novalidate>
             {{form.csrf_token}}
             
-            <!--Name on the account-->
-            <div class="govuk-form-group {% if form.name_on_the_account.errors %}govuk-form-group--error{% endif %}">
-                {{form.name_on_the_account.label(class="govuk-label")}}
-                {% if form.name_on_the_account.errors %}
-                    {% for error in form.name_on_the_account.errors %}
-                    <span id="name_on_the_account_error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{error}}
-                    </span>
-                    {% endfor %}
-                    {{form.name_on_the_account(class="govuk-input govuk-input--error", spellcheck="false", aria_describedby="name_on_the_account_error")}}
-                {% else %}
-                    {{form.name_on_the_account(class="govuk-input", spellcheck="false")}}
-                {% endif %}
-            </div>
-
-            <!--Sort code-->
-            <div class="govuk-form-group {% if form.sort_code.errors %}govuk-form-group--error{% endif %}">
-                {{form.sort_code.label(class="govuk-label")}}
-                <div id="sort_code_hint" class="govuk-hint">{{form.sort_code.description}}</div>
-                {% if form.sort_code.errors %}
-                    {% for error in form.sort_code.errors %}
-                    <span id="sort_code_error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{error}}
-                    </span>
-                    {% endfor %}
-                    {{form.sort_code(class="govuk-input govuk-input--width-5 govuk-input--error", spellcheck="false", aria_describedby="sort_code_hint sort_code_error", pattern="[0-9]*", inputmode="numeric")}}
-                {% else %}
-                    {{form.sort_code(class="govuk-input govuk-input--width-5", spellcheck="false", aria_describedby="sort_code_hint", pattern="[0-9]*", inputmode="numeric")}}
-                {% endif %}
-            </div>
+            {{form.name_on_the_account(params={
+              'spellcheck': false
+            })}}
             
-            <!--Account number-->
-            <div class="govuk-form-group {% if form.account_number.errors %}govuk-form-group--error{% endif %}">
-                {{form.account_number.label(class="govuk-label")}}
-                <div id="account_number_hint" class="govuk-hint">{{form.account_number.description}}</div>
-                {% if form.account_number.errors %}
-                    {% for error in form.account_number.errors %}
-                    <span id="account_number_error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{error}}
-                    </span>
-                    {% endfor %}
-                    {{form.account_number(class="govuk-input govuk-input--width-10 govuk-input--error", spellcheck="false", aria_describedby="account_number_hint account_number_error", pattern="[0-9]*", inputmode="numeric")}}
-                {% else %}
-                    {{form.account_number(class="govuk-input govuk-input--width-10", spellcheck="false", aria_describedby="account_number_hint", pattern="[0-9]*", inputmode="numeric")}}
-                {% endif %}
-            </div>
-
-            <!--Roll number-->
-            <div class="govuk-form-group {% if form.roll_number.errors %}govuk-form-group--error{% endif %}">
-                {{form.roll_number.label(class="govuk-label")}}
-                <div id="roll_number_hint" class="govuk-hint">{{form.roll_number.description}}</div>
-                {% if form.roll_number.errors %}
-                    {% for error in form.roll_number.errors %}
-                    <span id="roll_number_error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{error}}
-                    </span>
-                    {% endfor %}
-                    {{form.roll_number(class="govuk-input govuk-input--width-10 govuk-input--error", spellcheck="false", aria_describedby="roll_number_hint roll_number_error")}}
-                {% else %}
-                    {{form.roll_number(class="govuk-input govuk-input--width-10", spellcheck="false", aria_describedby="roll_number_hint")}}
-                {% endif %}
-            </div>
-
-            {{form.submit(class="govuk-button", data_module="govuk-button")}}
+            {{form.sort_code(params={
+              'classes': 'govuk-input--width-5',
+              'hint': {
+                'text': form.sort_code.description
+              },
+              'inputmode': 'numeric',
+              'pattern': '[0-9]*',
+              'spellcheck': false
+            })}}
+            
+            {{form.account_number(params={
+              'classes': 'govuk-input--width-10',
+              'hint': {
+                'text': form.account_number.description
+              },
+              'inputmode': 'numeric',
+              'pattern': '[0-9]*',
+              'spellcheck': false
+            })}}
+            
+            {{form.roll_number(params={
+              'classes': 'govuk-input--width-10',
+              'hint': {
+                'text': form.roll_number.description
+              },
+              'spellcheck': false
+            })}}
+            
+            {{form.submit}}
         </form>
     </div>
 </div>

@@ -1,8 +1,7 @@
 from flask import flash, redirect, render_template, url_for
 
 from app import app
-from app.basic_forms import BankDetailsForm, CreateAccountForm
-from app.gov_forms import GovBankDetailsForm, GovCreateAccountForm
+from app.forms import BankDetailsForm, CreateAccountForm
 
 
 @app.route("/")
@@ -26,24 +25,6 @@ def create_account():
         flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("create_account.html", form=form)
-
-
-@app.route("/forms/gov-bank-details", methods=["GET", "POST"])
-def gov_bank_details():
-    form = GovBankDetailsForm()
-    if form.validate_on_submit():
-        flash("Form successfully submitted", "success")
-        return redirect(url_for("index"))
-    return render_template("gov_bank_details.html", form=form)
-
-
-@app.route("/forms/gov-create-account", methods=["GET", "POST"])
-def gov_create_account():
-    form = GovCreateAccountForm()
-    if form.validate_on_submit():
-        flash("Form successfully submitted", "success")
-        return redirect(url_for("index"))
-    return render_template("gov_create_account.html", form=form)
 
 
 @app.errorhandler(404)

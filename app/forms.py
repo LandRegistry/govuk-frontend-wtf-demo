@@ -1,14 +1,18 @@
 from flask_wtf import FlaskForm
+from govuk_frontend_wtf.wtforms_widgets import GovCheckboxInput, GovPasswordInput, GovSubmitInput, GovTextInput
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import Email, EqualTo, InputRequired, Length, Optional, Regexp
 
 
 class BankDetailsForm(FlaskForm):
     name_on_the_account = StringField(
-        "Name on the account", validators=[InputRequired(message="Enter the name on the account")]
+        "Name on the account",
+        widget=GovTextInput(),
+        validators=[InputRequired(message="Enter the name on the account")],
     )
     sort_code = StringField(
         "Sort code",
+        widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter a sort code"),
             Regexp(regex="\d{6}", message="Enter a valid sort code like 309430"),
@@ -17,6 +21,7 @@ class BankDetailsForm(FlaskForm):
     )
     account_number = StringField(
         "Account number",
+        widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter an account number"),
             Regexp(regex="\d{6,8}", message="Enter a valid account number like 00733445"),
@@ -26,6 +31,7 @@ class BankDetailsForm(FlaskForm):
     )
     roll_number = StringField(
         "Building society roll number (if you have one)",
+        widget=GovTextInput(),
         validators=[
             Optional(),
             Length(min=1, max=18, message="Building society roll number must be between 1 and 18 characters"),
@@ -36,14 +42,19 @@ class BankDetailsForm(FlaskForm):
         ],
         description="You can find it on your card, statement or passbook",
     )
-    submit = SubmitField("Continue")
+    submit = SubmitField("Continue", widget=GovSubmitInput())
 
 
 class CreateAccountForm(FlaskForm):
-    first_name = StringField("First name", validators=[InputRequired(message="Enter your first name")])
-    last_name = StringField("Last name", validators=[InputRequired(message="Enter your last name")])
+    first_name = StringField(
+        "First name", widget=GovTextInput(), validators=[InputRequired(message="Enter your first name")]
+    )
+    last_name = StringField(
+        "Last name", widget=GovTextInput(), validators=[InputRequired(message="Enter your last name")]
+    )
     national_insurance_number = StringField(
         "National Insurance number",
+        widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter a National Insurance number"),
             Length(max=13, message="National Insurance number must be 13 characters or fewer"),
@@ -56,6 +67,7 @@ class CreateAccountForm(FlaskForm):
     )
     email_address = StringField(
         "Email address",
+        widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter an email address"),
             Length(max=256, message="Email address must be 256 characters or fewer"),
@@ -65,6 +77,7 @@ class CreateAccountForm(FlaskForm):
     )
     telephone_number = StringField(
         "UK telephone number",
+        widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter a UK telephone number"),
             Regexp(
@@ -75,6 +88,7 @@ class CreateAccountForm(FlaskForm):
     )
     password = PasswordField(
         "Create a password",
+        widget=GovPasswordInput(),
         validators=[
             InputRequired(message="Enter a password"),
             Length(min=8, message="Password must be at least 8 characters"),
@@ -83,6 +97,7 @@ class CreateAccountForm(FlaskForm):
     )
     confirm_password = PasswordField(
         "Confirm password",
+        widget=GovPasswordInput(),
         validators=[
             InputRequired(message="Confirm your password"),
             EqualTo("password", message="Passwords must match"),
@@ -90,6 +105,7 @@ class CreateAccountForm(FlaskForm):
     )
     terms_and_conditions = BooleanField(
         "I agree to the terms and conditions",
+        widget=GovCheckboxInput(),
         validators=[InputRequired(message="Select to confirm you agree with the terms and conditions")],
     )
-    submit = SubmitField("Create account")
+    submit = SubmitField("Create account", widget=GovSubmitInput())
