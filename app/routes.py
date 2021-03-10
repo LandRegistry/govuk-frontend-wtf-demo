@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, url_for
 
 from app import app
-from app.forms import BankDetailsForm, CreateAccountForm
+from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm
 
 
 @app.route("/")
@@ -25,6 +25,12 @@ def create_account():
         flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("create_account.html", form=form)
+
+
+@app.route("/cookies", methods=["GET", "POST"])
+def cookies_page():
+    form = CookiesForm
+    return render_template("cookies.html", form=form)
 
 
 @app.errorhandler(404)
