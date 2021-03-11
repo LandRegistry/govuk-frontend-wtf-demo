@@ -2,14 +2,15 @@
 
 {%- from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink -%}
 {%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary -%}
+{%- from 'govuk_frontend_jinja/components/notification-banner/macro.html' import govukNotificationBanner -%}
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 
-{% block pageTitle %}{%- if form and form.errors %}Error: {% endif -%}BCookies – GOV.UK Frontend WTForms Demo{% endblock %}
+{% block pageTitle %}{%- if form and form.errors %}Error: {% endif -%}Cookies – GOV.UK Frontend WTForms Demo{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
-  'text': "Back",
-  'href': url_for('index')
+    'text': "Back",
+    'href': url_for('index')
   }) }}
 {% endblock %}
 
@@ -17,10 +18,18 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% if form.errors %}
-    {{ govukErrorSummary(wtforms_errors(form)) }}
+      {{ govukErrorSummary(wtforms_errors(form)) }}
     {% endif %}
 
-    <span class="govuk-caption-xl">Example</span>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+            {{ govukNotificationBanner({'type': category, 'html': message}) }}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <span class="govuk-caption-xl">Example form</span>
     <h1 class="govuk-heading-xl">Cookies</h1>
     <p class="govuk-body">Cookies are small files saved on your phone, tablet or computer when you visit a website.
     </p>
@@ -34,14 +43,14 @@
       {
         'head': [{'text': 'Name'}, {'text': 'Purpose'}, {'text': 'Expires'}],
         'rows': [
-          [{'text': 'foo'}, {'text': 'bar'}, {'text': 'baz'}]
+          [{'text': 'cookie_policy'}, {'text': 'Saves your cookie consent settings'}, {'text': '1 year'}]
         ]
       }
     )}}
 
     <h2 class="govuk-heading-l">Functional cookies</h2>
     <p class="govuk-body">Functional cookies allow you to take advantage of some functionality, for example remembering
-      settings between visits, but the service will work without them.</p>
+      settings between visits. The service will work without them.</p>
     {{ govukTable(
       {
         'head': [{'text': 'Name'}, {'text': 'Purpose'}, {'text': 'Expires'}],
@@ -55,7 +64,6 @@
     <p class="govuk-body">With your permission, we use Google Analytics to collect data about how you use this service. This
       information helps us to improve our service.</p>
     <p class="govuk-body">Google is not allowed to use or share our analytics data with anyone.</p>
-    <p class="govuk-body">Google Analytics stores anonymised information about:</p>
     {{ govukTable(
       {
         'head': [{'text': 'Name'}, {'text': 'Purpose'}, {'text': 'Expires'}],
@@ -69,9 +77,9 @@
     <form action="" method="post" novalidate>
       {{ form.csrf_token }}
 
-      {{ form.functional }}
+      {{ form.functional(params={'fieldset': {'legend': {'text': form.functional.label, 'classes': 'govuk-fieldset__legend--s'}}}) }}
 
-      {{ form.analytics }}
+      {{ form.analytics(params={'fieldset': {'legend': {'text': form.analytics.label, 'classes': 'govuk-fieldset__legend--s'}}}) }}
 
       {{ form.save }}
     </form>
