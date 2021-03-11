@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
 
 from app import app
 from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm
@@ -29,7 +29,9 @@ def create_account():
 
 @app.route("/cookies", methods=["GET", "POST"])
 def cookies_page():
-    form = CookiesForm
+    form = CookiesForm()
+    if form.validate_on_submit():
+        flash("<p class='govuk-notification-banner__heading'>You’ve set your cookie preferences. <a href={} class='govuk-notification-banner__link'>Go back to the page you were looking at</a>.</p>".format(url_for("index")), "success")
     return render_template("cookies.html", form=form)
 
 
