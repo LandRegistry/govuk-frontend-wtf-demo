@@ -133,14 +133,14 @@ class CookiesForm(FlaskForm):
         "Do you want to accept functional cookies?",
         widget=GovRadioInput(),
         validators=[InputRequired(message="Select yes if you want to accept functional cookies")],
-        choices=[(False, "No"), (True, "Yes")],
-        default=False,
+        choices=[("no", "No"), ("yes", "Yes")],
+        default="no",
     )
     analytics = RadioField(
         "Do you want to accept analytics cookies?",
         widget=GovRadioInput(),
         validators=[InputRequired(message="Select yes if you want to accept analytics cookies")],
-        choices=[(False, "No"), (True, "Yes")],
-        default=False,
+        choices=[("no", "No"), ("yes", "Yes")],
+        default="no",
     )
     save = SubmitField("Save cookie settings", widget=GovSubmitInput())
