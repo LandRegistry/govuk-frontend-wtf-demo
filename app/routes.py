@@ -1,7 +1,8 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
+from flask_wtf.csrf import CSRFError
 
 from app import app
-from app.forms import BankDetailsForm, CreateAccountForm
+from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm
 
 
 @app.route("/")
@@ -27,6 +28,19 @@ def create_account():
     return render_template("create_account.html", form=form)
 
 
+@app.route("/cookies", methods=["GET", "POST"])
+def cookies_page():
+    form = CookiesForm()
+    if form.validate_on_submit():
+        flash(
+            "<p class='govuk-notification-banner__heading'>You’ve set your cookie preferences. <a href={} class='govuk-notification-banner__link'>Go back to the page you were looking at</a>.</p>".format(
+                url_for("index")
+            ),
+            "success",
+        )
+    return render_template("cookies.html", form=form)
+
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("404.html"), 404
@@ -35,3 +49,9 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_server(error):
     return render_template("500.html"), 500
+
+
+@app.errorhandler(CSRFError)
+def csrf_error(error):
+    flash("The form you were submitting has expired. Please try again.")
+    return redirect(request.full_path)

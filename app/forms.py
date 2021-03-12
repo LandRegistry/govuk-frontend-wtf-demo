@@ -1,6 +1,12 @@
 from flask_wtf import FlaskForm
-from govuk_frontend_wtf.wtforms_widgets import GovCheckboxInput, GovPasswordInput, GovSubmitInput, GovTextInput
-from wtforms import BooleanField, PasswordField, StringField, SubmitField
+from govuk_frontend_wtf.wtforms_widgets import (
+    GovCheckboxInput,
+    GovPasswordInput,
+    GovRadioInput,
+    GovSubmitInput,
+    GovTextInput,
+)
+from wtforms import BooleanField, PasswordField, RadioField, StringField, SubmitField
 from wtforms.validators import Email, EqualTo, InputRequired, Length, Optional, Regexp
 
 
@@ -34,7 +40,11 @@ class BankDetailsForm(FlaskForm):
         widget=GovTextInput(),
         validators=[
             Optional(),
-            Length(min=1, max=18, message="Building society roll number must be between 1 and 18 characters"),
+            Length(
+                min=1,
+                max=18,
+                message="Building society roll number must be between 1 and 18 characters",
+            ),
             Regexp(
                 regex="[a-zA-Z0-9- /.]*$",
                 message="Building society roll number must only include letters a to z, numbers, hyphens, spaces, forward slashes and full stops",
@@ -47,17 +57,24 @@ class BankDetailsForm(FlaskForm):
 
 class CreateAccountForm(FlaskForm):
     first_name = StringField(
-        "First name", widget=GovTextInput(), validators=[InputRequired(message="Enter your first name")]
+        "First name",
+        widget=GovTextInput(),
+        validators=[InputRequired(message="Enter your first name")],
     )
     last_name = StringField(
-        "Last name", widget=GovTextInput(), validators=[InputRequired(message="Enter your last name")]
+        "Last name",
+        widget=GovTextInput(),
+        validators=[InputRequired(message="Enter your last name")],
     )
     national_insurance_number = StringField(
         "National Insurance number",
         widget=GovTextInput(),
         validators=[
             InputRequired(message="Enter a National Insurance number"),
-            Length(max=13, message="National Insurance number must be 13 characters or fewer"),
+            Length(
+                max=13,
+                message="National Insurance number must be 13 characters or fewer",
+            ),
             Regexp(
                 regex="^[a-zA-Z]{2}\d{6}[aAbBcCdD]$",
                 message="Enter a National Insurance number in the correct format",
@@ -109,3 +126,21 @@ class CreateAccountForm(FlaskForm):
         validators=[InputRequired(message="Select to confirm you agree with the terms and conditions")],
     )
     submit = SubmitField("Create account", widget=GovSubmitInput())
+
+
+class CookiesForm(FlaskForm):
+    functional = RadioField(
+        "Do you want to accept functional cookies?",
+        widget=GovRadioInput(),
+        validators=[InputRequired(message="Select yes if you want to accept functional cookies")],
+        choices=[("no", "No"), ("yes", "Yes")],
+        default="no",
+    )
+    analytics = RadioField(
+        "Do you want to accept analytics cookies?",
+        widget=GovRadioInput(),
+        validators=[InputRequired(message="Select yes if you want to accept analytics cookies")],
+        choices=[("no", "No"), ("yes", "Yes")],
+        default="no",
+    )
+    save = SubmitField("Save cookie settings", widget=GovSubmitInput())
