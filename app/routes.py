@@ -1,4 +1,5 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
+from flask_wtf.csrf import CSRFError
 
 from app import app
 from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm
@@ -48,3 +49,9 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_server(error):
     return render_template("500.html"), 500
+
+
+@app.errorhandler(CSRFError)
+def csrf_error(error):
+    flash("The form you were submitting has expired. Please try again.")
+    return redirect(request.full_path)

@@ -2,6 +2,7 @@ from config import Config
 from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
+from flask_wtf.csrf import CSRFProtect
 from govuk_frontend_wtf.main import WTFormsHelpers
 from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
 
@@ -35,6 +36,7 @@ csp = {
 
 Compress(app)
 Talisman(app, content_security_policy=csp)
+csrf = CSRFProtect(app)
 WTFormsHelpers(app)
 
 from app import routes
