@@ -1,18 +1,11 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
-{%- from 'govuk_frontend_jinja/components/notification-banner/macro.html' import govukNotificationBanner -%}
 
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    {{ govukNotificationBanner({'type': category, 'text': message}) }}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        {{ super() }}
         <span class="govuk-caption-xl">Demonstration</span>
         <h1 class="govuk-heading-xl">GOV.UK Frontend WTForms</h1>
         <p class="govuk-body-l">

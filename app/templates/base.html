@@ -1,5 +1,8 @@
 {% extends 'govuk_frontend_jinja/template.html' %}
 
+{%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary-%}
+{%- from 'govuk_frontend_jinja/components/notification-banner/macro.html' import govukNotificationBanner -%}
+
 {% set assetPath = url_for('static', filename='').rstrip('/') %}
 
 {% block pageTitle %}GOV.UK Frontend WTForms Demo{% endblock %}
@@ -18,6 +21,20 @@
     'serviceName': "GOV.UK Frontend WTForms Demo",
     'serviceUrl': url_for('index')
   }) }}
+{% endblock %}
+
+{% block content %}
+  {% if form and form.errors %}
+    {{ govukErrorSummary(wtforms_errors(form)) }}
+  {% endif %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+          {{ govukNotificationBanner({'type': category, 'html': message}) }}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
 {% endblock %}
 
 {% block footer %}
