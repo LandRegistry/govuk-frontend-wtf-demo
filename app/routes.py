@@ -1,4 +1,6 @@
-from flask import flash, redirect, render_template, request, url_for
+import json
+
+from flask import flash, make_response, redirect, render_template, request, url_for
 from flask_wtf.csrf import CSRFError
 
 from app import app
@@ -31,14 +33,44 @@ def create_account():
 @app.route("/cookies", methods=["GET", "POST"])
 def cookies_page():
     form = CookiesForm()
+    # Default cookies policy to reject all categories of cookie
+    cookies_policy = {"functional": "no", "analytics": "no"}
+
+    # Create the response up front so we can set the cookie before returning
+    response = make_response(render_template("cookies.html", title="Cookies", form=form))
+
     if form.validate_on_submit():
-        flash(
-            "<p class='govuk-notification-banner__heading'>You’ve set your cookie preferences. <a href={} class='govuk-notification-banner__link'>Go back to the page you were looking at</a>.</p>".format(
-                url_for("index")
-            ),
-            "success",
-        )
-    return render_template("cookies.html", form=form)
+        print("Form validated on submit")
+        # Update cookies policy consent from form data
+        print("Setting functional cookie consent to {}".format(form.functional.data))
+        cookies_policy["functional"] = form.functional.data
+        print("Setting analytics cookie consent to {}".format(form.analytics.data))
+        cookies_policy["analytics"] = form.analytics.data
+
+        # Set cookies policy for one year
+        print("Setting cookies_policy cookie to {}".format(json.dumps(cookies_policy)))
+        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600)
+
+        # Confirm to the user and return response
+        flash("You’ve set your cookie preferences.", "success")
+        return response
+    elif request.method == "GET":
+        if request.cookies.get("cookies_policy"):
+            # Set cookie consent radios data to current policy
+            print("Found existing cookie policy {}".format(request.cookies.get("cookies_policy")))
+            cookies_policy = json.loads(request.cookies.get("cookies_policy"))
+            print("Setting functional cookie consent radio to existing {}".format(cookies_policy["functional"]))
+            form.functional.data = cookies_policy["functional"]
+            print("Setting analytics cookie consent radio to existing {}".format(cookies_policy["analytics"]))
+            form.analytics.data = cookies_policy["analytics"]
+        else:
+            # If conset not previously set, use default "no" policy
+            print("No existing cookie policy found, using default policy {}".format(cookies_policy))
+            print("Setting functional cookie consent radio to default {}".format(cookies_policy["functional"]))
+            form.functional.data = cookies_policy["functional"]
+            print("Setting analytics cookie consent radio to default {}".format(cookies_policy["analytics"]))
+            form.analytics.data = cookies_policy["analytics"]
+    return response
 
 
 @app.errorhandler(404)
