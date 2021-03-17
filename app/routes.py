@@ -36,41 +36,31 @@ def cookies_page():
     # Default cookies policy to reject all categories of cookie
     cookies_policy = {"functional": "no", "analytics": "no"}
 
-    # Create the response up front so we can set the cookie before returning
-    response = make_response(render_template("cookies.html", title="Cookies", form=form))
-
     if form.validate_on_submit():
-        print("Form validated on submit")
         # Update cookies policy consent from form data
-        print("Setting functional cookie consent to {}".format(form.functional.data))
         cookies_policy["functional"] = form.functional.data
-        print("Setting analytics cookie consent to {}".format(form.analytics.data))
         cookies_policy["analytics"] = form.analytics.data
 
-        # Set cookies policy for one year
-        print("Setting cookies_policy cookie to {}".format(json.dumps(cookies_policy)))
-        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600)
-
-        # Confirm to the user and return response
+        # Create flash message confirmation before rendering template
         flash("You’ve set your cookie preferences.", "success")
+
+        # Create the response so we can set the cookie before returning
+        response = make_response(render_template("cookies.html", form=form))
+
+        # Set cookies policy for one year
+        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600)
         return response
     elif request.method == "GET":
         if request.cookies.get("cookies_policy"):
-            # Set cookie consent radios data to current policy
-            print("Found existing cookie policy {}".format(request.cookies.get("cookies_policy")))
+            # Set cookie consent radios to current consent
             cookies_policy = json.loads(request.cookies.get("cookies_policy"))
-            print("Setting functional cookie consent radio to existing {}".format(cookies_policy["functional"]))
             form.functional.data = cookies_policy["functional"]
-            print("Setting analytics cookie consent radio to existing {}".format(cookies_policy["analytics"]))
             form.analytics.data = cookies_policy["analytics"]
         else:
             # If conset not previously set, use default "no" policy
-            print("No existing cookie policy found, using default policy {}".format(cookies_policy))
-            print("Setting functional cookie consent radio to default {}".format(cookies_policy["functional"]))
             form.functional.data = cookies_policy["functional"]
-            print("Setting analytics cookie consent radio to default {}".format(cookies_policy["analytics"]))
             form.analytics.data = cookies_policy["analytics"]
-    return response
+    return render_template("cookies.html", form=form)
 
 
 @app.errorhandler(404)
