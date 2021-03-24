@@ -2,7 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=git,venv,macos,linux,flask,vscode,python,windows,jetbrains+all
 
 ### GOV.UK Frontend ###
-app/static*
+app/static/fonts*
+app/static/images*
+app/static/govuk-frontend*
+app/static/VERSION.txt
 
 ### Flask ###
 instance/*
