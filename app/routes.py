@@ -4,7 +4,7 @@ from flask import flash, make_response, redirect, render_template, request, url_
 from flask_wtf.csrf import CSRFError
 
 from app import app
-from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm
+from app.forms import BankDetailsForm, CookiesForm, CreateAccountForm, KitchenSinkForm
 
 
 @app.route("/")
@@ -28,6 +28,15 @@ def create_account():
         flash("Form successfully submitted", "success")
         return redirect(url_for("index"))
     return render_template("create_account.html", form=form)
+
+
+@app.route("/forms/kitchen-sink", methods=["GET", "POST"])
+def kitchen_sink():
+    form = KitchenSinkForm()
+    if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
+        return redirect(url_for("index"))
+    return render_template("kitchen_sink.html", form=form)
 
 
 @app.route("/cookies", methods=["GET", "POST"])
