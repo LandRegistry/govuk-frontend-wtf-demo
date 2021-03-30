@@ -56,8 +56,12 @@ def cookies_page():
         # Create the response so we can set the cookie before returning
         response = make_response(render_template("cookies.html", form=form))
 
+        # If cookies have been declined, remove any existing ones from previous acceptances
+        # if form.functional.data == "no":
+        #     response.delete_cookie("cookie_name")
+
         # Set cookies policy for one year
-        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600)
+        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600, secure=True)
         return response
     elif request.method == "GET":
         if request.cookies.get("cookies_policy"):
