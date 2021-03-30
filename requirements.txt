@@ -32,7 +32,7 @@ govuk-frontend-jinja==1.2.1
     # via govuk-frontend-wtf
 govuk-frontend-wtf==0.1.1
     # via -r requirements.in
-gunicorn==20.0.4
+gunicorn==20.1.0
     # via -r requirements.in
 idna==3.1
     # via email-validator
@@ -51,7 +51,7 @@ markupsafe==1.1.1
     # via
     #   jinja2
     #   wtforms
-python-dotenv==0.15.0
+python-dotenv==0.16.0
     # via -r requirements.in
 six==1.15.0
     # via flask-talisman
