@@ -1,5 +1,6 @@
 from config import Config
 from flask import Flask
+from flask_assets import Bundle, Environment
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
@@ -38,5 +39,9 @@ Compress(app)
 Talisman(app, content_security_policy=csp)
 csrf = CSRFProtect(app)
 WTFormsHelpers(app)
+
+assets = Environment(app)
+js = Bundle("src/js/*.js", filters="jsmin", output="dist/js/custom-%(version)s.js")
+assets.register("js", js)
 
 from app import routes

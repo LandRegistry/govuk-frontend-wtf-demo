@@ -8,11 +8,13 @@ brotli==1.0.9
     # via flask-compress
 click==7.1.2
     # via flask
-deepmerge==0.1.1
+deepmerge==0.2.1
     # via govuk-frontend-wtf
 dnspython==2.1.0
     # via email-validator
 email_validator==1.1.2
+    # via -r requirements.in
+flask-assets==2.0
     # via -r requirements.in
 flask-compress==1.9.0
     # via -r requirements.in
@@ -22,6 +24,7 @@ flask-wtf==0.14.3
     # via govuk-frontend-wtf
 flask==1.1.2
     # via
+    #   flask-assets
     #   flask-compress
     #   flask-wtf
     #   govuk-frontend-wtf
@@ -42,6 +45,8 @@ jinja2==2.11.3
     #   flask
     #   govuk-frontend-jinja
     #   govuk-frontend-wtf
+jsmin==2.2.2
+    # via -r requirements.in
 markupsafe==1.1.1
     # via
     #   jinja2
@@ -50,6 +55,8 @@ python-dotenv==0.15.0
     # via -r requirements.in
 six==1.15.0
     # via flask-talisman
+webassets==2.0
+    # via flask-assets
 werkzeug==1.0.1
     # via flask
 wtforms==2.3.3
