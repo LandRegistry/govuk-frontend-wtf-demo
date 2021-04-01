@@ -51,14 +51,21 @@ def cookies_page():
         cookies_policy["analytics"] = form.analytics.data
 
         # Create flash message confirmation before rendering template
-        flash("You’ve set your cookie preferences.", "success")
+        flash(
+            "<p class='govuk-notification-banner__heading'>You’ve set your cookie preferences. <a class='govuk-notification-banner__link' href='{}'>Go back to the page you were looking at</a>.</p>".format(
+                url_for("index")
+            ),
+            "success",
+        )
 
         # Create the response so we can set the cookie before returning
         response = make_response(render_template("cookies.html", form=form))
 
         # If cookies have been declined, remove any existing ones from previous acceptances
-        # if form.functional.data == "no":
-        #     response.delete_cookie("cookie_name")
+        if form.functional.data == "no":
+            response.delete_cookie("your_functional_cookie")
+        elif form.analytics.data == "no":
+            response.delete_cookie("your_analytics_cookie")
 
         # Set cookies policy for one year
         response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600, secure=True)
