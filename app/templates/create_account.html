@@ -31,6 +31,12 @@
           'autocomplete': 'family-name'
         }) }}
 
+        {{ form.date_of_birth(params={
+          'hint': {
+            'text': form.date_of_birth.description
+          }
+        }) }}
+
         {{ form.national_insurance_number(params={
           'classes': 'govuk-input--width-10', 
           'hint': {

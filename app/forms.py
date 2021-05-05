@@ -87,6 +87,12 @@ class CreateAccountForm(FlaskForm):
         widget=GovTextInput(),
         validators=[InputRequired(message="Enter your last name")],
     )
+    date_of_birth = DateField(
+        "Date of birth",
+        widget=GovDateInput(),
+        validators=[InputRequired(message="Enter your date of birth")],
+        description="For example, 31 3 1980"
+    )
     national_insurance_number = StringField(
         "National Insurance number",
         widget=GovTextInput(),
