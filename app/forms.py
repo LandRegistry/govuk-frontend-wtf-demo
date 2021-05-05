@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from govuk_frontend_wtf.wtforms_widgets import (
     GovCheckboxesInput,
     GovCheckboxInput,
+    GovDateInput,
     GovFileInput,
     GovPasswordInput,
     GovRadioInput,
@@ -12,6 +13,8 @@ from govuk_frontend_wtf.wtforms_widgets import (
 )
 from wtforms.fields import (
     BooleanField,
+    DateField,
+    DateTimeField,
     DecimalField,
     FileField,
     FloatField,
@@ -262,6 +265,18 @@ class KitchenSinkForm(FlaskForm):
         "Re-type your password",
         widget=GovPasswordInput(),
         validators=[InputRequired("Please retype your password")],
+    )
+
+    date_field = DateField(
+        "DateField",
+        widget=GovDateInput(),
+        validators=[InputRequired(message="DateField is required")],
+    )
+
+    date_time_field = DateTimeField(
+        "DateTimeField",
+        widget=GovDateInput(),
+        validators=[InputRequired(message="DateTimeField is required")],
     )
 
     submit_button = SubmitField("SubmitField", widget=GovSubmitInput())
