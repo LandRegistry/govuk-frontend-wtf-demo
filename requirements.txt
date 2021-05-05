@@ -8,7 +8,7 @@ brotli==1.0.9
     # via flask-compress
 click==7.1.2
     # via flask
-deepmerge==0.2.1
+deepmerge==0.3.0
     # via govuk-frontend-wtf
 dnspython==2.1.0
     # via email-validator
@@ -51,7 +51,7 @@ markupsafe==1.1.1
     # via
     #   jinja2
     #   wtforms
-python-dotenv==0.16.0
+python-dotenv==0.17.1
     # via -r requirements.in
 six==1.15.0
     # via flask-talisman
