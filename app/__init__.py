@@ -44,4 +44,4 @@ assets = Environment(app)
 js = Bundle("src/js/*.js", filters="jsmin", output="dist/js/custom-%(version)s.js")
 assets.register("js", js)
 
-from app import routes
+from app import routes  # noqa: E402, F401
