@@ -178,42 +178,49 @@ class KitchenSinkForm(FlaskForm):
         "StringField",
         widget=GovTextInput(),
         validators=[InputRequired(message="StringField is required")],
+        description="Hint text",
     )
 
     email_field = StringField(
         "Email address",
         widget=GovTextInput(),
         validators=[InputRequired(message="Email address is required"), Email()],
+        description="Hint text",
     )
 
     float_field = FloatField(
         "FloatField",
         widget=GovTextInput(),
         validators=[InputRequired(message="FloatField is required")],
+        description="Hint text",
     )
 
     integer_field = IntegerField(
         "IntegerField",
         widget=GovTextInput(),
         validators=[InputRequired(message="IntegerField is required")],
+        description="Hint text",
     )
 
     decimal_field = DecimalField(
         "DecimalField",
         widget=GovTextInput(),
         validators=[InputRequired(message="DecimalField is required")],
+        description="Hint text",
     )
 
     textarea_field = TextAreaField(
         "TextAreaField",
         widget=GovTextArea(),
         validators=[InputRequired(message="TextAreaField is required")],
+        description="Hint text",
     )
 
     boolean_field = BooleanField(
         "BooleanField",
         widget=GovCheckboxInput(),
         validators=[InputRequired(message="Please tick the box")],
+        description="Hint text",
     )
 
     select_field = SelectField(
@@ -227,6 +234,7 @@ class KitchenSinkForm(FlaskForm):
             ("three", "Three"),
         ],
         default="",
+        description="Hint text",
     )
 
     select_multiple_field = SelectMultipleField(
@@ -234,6 +242,7 @@ class KitchenSinkForm(FlaskForm):
         widget=GovCheckboxesInput(),
         validators=[InputRequired(message="Please select an option")],
         choices=[("one", "One"), ("two", "Two"), ("three", "Three")],
+        description="Hint text",
     )
 
     radio_field = RadioField(
@@ -241,18 +250,21 @@ class KitchenSinkForm(FlaskForm):
         widget=GovRadioInput(),
         validators=[InputRequired(message="Please select an option")],
         choices=[("one", "One"), ("two", "Two"), ("three", "Three")],
+        description="Hint text",
     )
 
     file_field = FileField(
         "FileField",
         widget=GovFileInput(),
         validators=[InputRequired(message="Please upload a file")],
+        description="Hint text",
     )
 
     multiple_file_field = MultipleFileField(
         "MultipleFileField",
         widget=GovFileInput(multiple=True),
         validators=[InputRequired(message="Please upload a file")],
+        description="Hint text",
     )
 
     password_field = PasswordField(
@@ -265,24 +277,28 @@ class KitchenSinkForm(FlaskForm):
                 message="Please ensure both password fields match",
             ),
         ],
+        description="Hint text",
     )
 
     password_retype_field = PasswordField(
         "Re-type your password",
         widget=GovPasswordInput(),
         validators=[InputRequired("Please retype your password")],
+        description="Hint text",
     )
 
     date_field = DateField(
         "DateField",
         widget=GovDateInput(),
         validators=[InputRequired(message="DateField is required")],
+        description="Hint text",
     )
 
     date_time_field = DateTimeField(
         "DateTimeField",
         widget=GovDateInput(),
         validators=[InputRequired(message="DateTimeField is required")],
+        description="Hint text",
     )
 
     submit_button = SubmitField("SubmitField", widget=GovSubmitInput())
