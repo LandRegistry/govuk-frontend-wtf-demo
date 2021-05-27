@@ -182,9 +182,9 @@ class KitchenSinkForm(FlaskForm):
     )
 
     email_field = StringField(
-        "Email address",
+        "EmailField",
         widget=GovTextInput(),
-        validators=[InputRequired(message="Email address is required"), Email()],
+        validators=[InputRequired(message="EmailField is required"), Email()],
         description="Hint text",
     )
 
