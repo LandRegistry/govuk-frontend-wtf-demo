@@ -68,7 +68,12 @@ def cookies_page():
             response.delete_cookie("your_analytics_cookie")
 
         # Set cookies policy for one year
-        response.set_cookie("cookies_policy", json.dumps(cookies_policy), max_age=31557600, secure=True)
+        response.set_cookie(
+            "cookies_policy",
+            json.dumps(cookies_policy),
+            max_age=31557600,
+            samesite="Lax",
+        )
         return response
     elif request.method == "GET":
         if request.cookies.get("cookies_policy"):
