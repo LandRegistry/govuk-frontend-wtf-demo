@@ -31,24 +31,14 @@
           'autocomplete': 'family-name'
         }) }}
 
-        {{ form.date_of_birth(params={
-          'hint': {
-            'text': form.date_of_birth.description
-          }
-        }) }}
+        {{ form.date_of_birth }}
 
         {{ form.national_insurance_number(params={
-          'classes': 'govuk-input--width-10', 
-          'hint': {
-            'text': form.national_insurance_number.description
-          }, 
+          'classes': 'govuk-input--width-10',
           'spellcheck': false
         }) }}
 
         {{ form.email_address(params={
-          'hint': {
-            'text': form.email_address.description
-          }, 
           'type': 'email', 
           'spellcheck': false, 
           'autocomplete': 'email'
@@ -62,9 +52,6 @@
         }) }}
 
         {{ form.password(params={
-          'hint': {
-            'text': form.password.description
-          }, 
           'spellcheck': false
         }) }}
 
@@ -72,13 +59,7 @@
           'spellcheck': false
         }) }}
         
-        {{ form.terms_and_conditions(params={
-          'fieldset': {
-            'legend': {
-              'text': 'Terms and conditions'
-            }
-          }
-        }) }}
+        {{ form.terms_and_conditions }}
         
         {{ form.submit}}
     </form>
