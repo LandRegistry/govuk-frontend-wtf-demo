@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated `jinja2` to [release v3.0.2](https://jinja.palletsprojects.com/en/3.0.x/changes/)
 - Updated Python runtime to 3.9.7
 
+### Removed
+
+- Manual fieldsets and hints from template examples
+
 ## [1.2.0](https://github.com/LandRegistry/govuk-frontend-wtf-demo/releases/tag/1.2.0) - 13/05/2021
 
 ### Changed
