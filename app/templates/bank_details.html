@@ -27,9 +27,6 @@
         
         {{ form.sort_code(params={
           'classes': 'govuk-input--width-5',
-          'hint': {
-            'text': form.sort_code.description
-          },
           'inputmode': 'numeric',
           'pattern': '[0-9]*',
           'spellcheck': false
@@ -37,9 +34,6 @@
         
         {{ form.account_number(params={
           'classes': 'govuk-input--width-10',
-          'hint': {
-            'text': form.account_number.description
-          },
           'inputmode': 'numeric',
           'pattern': '[0-9]*',
           'spellcheck': false
@@ -47,9 +41,6 @@
         
         {{ form.roll_number(params={
           'classes': 'govuk-input--width-10',
-          'hint': {
-            'text': form.roll_number.description
-          },
           'spellcheck': false
         }) }}
         

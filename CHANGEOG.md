@@ -4,7 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/LandRegistry/govuk-frontend-wtf-demo/compare/1.2.0...main)
+## [Unreleased](https://github.com/LandRegistry/govuk-frontend-wtf-demo/compare/1.3.0...main)
+
+## [1.3.0](https://github.com/LandRegistry/govuk-frontend-wtf-demo/releases/tag/1.3.0) - 22/10/2021
+
+### Added
+
+- Support for [Python v3.10](https://www.python.org/downloads/release/python-3100/)
+
+### Changed
+
+- Updated `govuk-frontend-wtf` to [release 1.0.0](https://github.com/LandRegistry/govuk-frontend-wtf/releases/tag/1.0.0)
+- Updated `govuk-frontend-jinja` to [release 1.5.1](https://github.com/LandRegistry/govuk-frontend-jinja/releases/tag/1.5.1)
+- Updated `govuk-frontend` to [release 3.14.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.14.0)
+- Updated `flask` to [release v2.0.2](https://flask.palletsprojects.com/en/2.0.x/changes/)
+- Updated `jinja2` to [release v3.0.2](https://jinja.palletsprojects.com/en/3.0.x/changes/)
+- Updated Python runtime to 3.9.7
+
+### Removed
+
+- Manual fieldsets and hints from template examples
 
 ## [1.2.0](https://github.com/LandRegistry/govuk-frontend-wtf-demo/releases/tag/1.2.0) - 13/05/2021
 

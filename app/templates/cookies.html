@@ -69,25 +69,8 @@
     <h2 class="govuk-heading-l">Change your cookie settings</h2>
     <form action="" method="post" novalidate>
       {{ form.csrf_token }}
-
-      {{ form.functional(params={
-        'fieldset': {
-          'legend': {
-            'text': form.functional.label, 
-            'classes': 'govuk-fieldset__legend--s'
-          }
-        }
-      }) }}
-
-      {{ form.analytics(params={
-        'fieldset': {
-          'legend': {
-            'text': form.analytics.label, 
-            'classes': 'govuk-fieldset__legend--s'
-          }
-        }
-      }) }}
-
+      {{ form.functional }}
+      {{ form.analytics }}
       {{ form.save }}
     </form>
   </div>

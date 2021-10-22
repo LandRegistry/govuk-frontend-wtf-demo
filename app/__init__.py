@@ -1,4 +1,3 @@
-from config import Config
 from flask import Flask
 from flask_assets import Bundle, Environment
 from flask_compress import Compress
@@ -6,6 +5,8 @@ from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
 from govuk_frontend_wtf.main import WTFormsHelpers
 from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
+
+from config import Config
 
 app = Flask(__name__, static_url_path="/assets")
 app.config.from_object(Config)
