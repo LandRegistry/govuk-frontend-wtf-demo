@@ -30,7 +30,7 @@ flask-wtf==0.15.1
     # via govuk-frontend-wtf
 govuk-frontend-jinja==1.5.1
     # via govuk-frontend-wtf
-govuk-frontend-wtf==0.3.2
+govuk-frontend-wtf==1.0.0
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
