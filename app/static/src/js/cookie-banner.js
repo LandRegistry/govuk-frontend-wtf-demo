@@ -1,11 +1,10 @@
 (function () {
   // Dont display if cookies policy already set
   if (
-    document.cookie
+    !document.cookie
       .split(";")
       .some((item) => item.trim().startsWith("cookies_policy="))
   ) {
-  } else {
     const cookieBanner = document.getElementById("cookie-banner");
     const defaultMessage = document.getElementById("default-message");
     const acceptedMessage = document.getElementById("accepted-message");
