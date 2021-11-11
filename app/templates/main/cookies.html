@@ -3,12 +3,12 @@
 {%- from 'govuk_frontend_jinja/components/back-link/macro.html' import govukBackLink -%}
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 
-{% block pageTitle %}{%- if form.errors %}Error: {% endif -%}Cookies – GOV.UK Frontend WTForms Demo{% endblock %}
+{% block pageTitle %}{%- if form.errors %}Error: {% endif -%}Cookies – GOV.UK Frontend WTForms Demo – GOV.UK{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     'text': "Back",
-    'href': url_for('index')
+    'href': url_for('main.index')
   }) }}
 {% endblock %}
 
