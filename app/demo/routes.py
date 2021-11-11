@@ -1,5 +1,4 @@
-from flask import flash, redirect, render_template, request, url_for
-from flask_wtf.csrf import CSRFError
+from flask import flash, redirect, render_template, url_for
 
 from app.demo import bp
 from app.demo.forms import BankDetailsForm, CreateAccountForm, KitchenSinkForm
@@ -30,9 +29,3 @@ def kitchen_sink():
         flash("Form successfully submitted", "success")
         return redirect(url_for("main.index"))
     return render_template("kitchen_sink.html", form=form)
-
-
-@bp.errorhandler(CSRFError)
-def csrf_error(error):
-    flash("The form you were submitting has expired. Please try again.")
-    return redirect(request.full_path)
