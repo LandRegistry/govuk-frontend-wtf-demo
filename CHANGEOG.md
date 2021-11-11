@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/LandRegistry/govuk-frontend-wtf-demo/compare/1.3.0...main)
+## [Unreleased](https://github.com/LandRegistry/govuk-frontend-wtf-demo/compare/1.4.0...main)
+
+## [1.4.0](https://github.com/LandRegistry/govuk-frontend-wtf-demo/releases/tag/1.4.0) - 11/11/2021
+
+### Changed
+
+- Updated `govuk-frontend-wtf` to [release 1.1.0](https://github.com/LandRegistry/govuk-frontend-wtf/releases/tag/1.1.0)
+- Updated `flask-wtf` to [release 1.0.0](https://github.com/wtforms/flask-wtf/releases/tag/v1.0.0)
+- Updated `wtforms` to [release 3.0.0](https://github.com/wtforms/wtforms/releases/tag/3.0.0)
+
 
 ## [1.3.0](https://github.com/LandRegistry/govuk-frontend-wtf-demo/releases/tag/1.3.0) - 22/10/2021
 
