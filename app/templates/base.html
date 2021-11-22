@@ -6,7 +6,7 @@
 
 {% set assetPath = url_for('static', filename='').rstrip('/') %}
 
-{% block pageTitle %}GOV.UK Frontend WTForms Demo{% endblock %}
+{% block pageTitle %}GOV.UK Frontend WTForms Demo – GOV.UK{% endblock %}
 
 {% block head %}
   <meta name="description" content="GOV.UK Frontend WTForms Demo">
@@ -24,11 +24,11 @@
     {% endset %}
 
     {% set acceptHtml %}
-      <p>You’ve accepted additional cookies. You can <a href="{{ url_for('cookies_page') }}">change your cookie settings</a> at any time.</p>
+      <p>You’ve accepted additional cookies. You can <a href="{{ url_for('main.cookies') }}">change your cookie settings</a> at any time.</p>
     {% endset %}
 
     {% set rejectHtml %}
-      <p>You’ve rejected additional cookies. You can <a href="{{ url_for('cookies_page') }}">change your cookie settings</a> at any time.</p>
+      <p>You’ve rejected additional cookies. You can <a href="{{ url_for('main.cookies') }}">change your cookie settings</a> at any time.</p>
     {% endset %}
 
     {{ govukCookieBanner({
@@ -64,7 +64,7 @@
             },
             {
               'text': "View cookies",
-              'href': url_for('cookies_page')
+              'href': url_for('main.cookies')
             }
           ]
         },
@@ -107,9 +107,9 @@
 
 {% block header %}
   {{ govukHeader({
-    'homepageUrl': url_for('index'),
+    'homepageUrl': url_for('main.index'),
     'serviceName': "GOV.UK Frontend WTForms Demo",
-    'serviceUrl': url_for('index')
+    'serviceUrl': url_for('main.index')
   }) }}
 {% endblock %}
 
@@ -174,8 +174,16 @@
     'meta': {
       'items': [
         {
-          'href': url_for('cookies_page'),
+          'href': url_for('main.accessibility'),
+          'text': "Accessibility"
+        },
+        {
+          'href': url_for('main.cookies'),
           'text': "Cookies"
+        },
+        {
+          'href': url_for('main.privacy'),
+          'text': "Privacy"
         }
       ],
       'html': 'Built by <a href="https://www.gov.uk/government/organisations/land-registry" class="govuk-footer__link">HM Land Registry</a> and <a href="https://github.com/LandRegistry/govuk-frontend-wtf/graphs/contributors" class="govuk-footer__link">Contributors</a>'
