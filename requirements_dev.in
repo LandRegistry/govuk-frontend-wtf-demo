@@ -1,5 +1,5 @@
-bandit==1.7.0
-black==21.10b0
+bandit==1.7.1
+black==21.11b1
 freezegun==1.1.0
 hacking==4.1.0
 isort==5.10.1
@@ -9,3 +9,5 @@ piprot==0.9.11
 pytest-cov==3.0.0
 pytest-html==3.1.1
 safety==1.10.3
+# Generated with piprot 0.9.10
+# Looks like you've been keeping up to date, time for a delicious beverage!
