@@ -6,9 +6,9 @@
 #
 attrs==21.2.0
     # via pytest
-bandit==1.7.0
+bandit==1.7.1
     # via -r requirements_dev.in
-black==21.10b0
+black==21.11b1
     # via -r requirements_dev.in
 certifi==2021.10.8
     # via requests
@@ -47,14 +47,14 @@ mccabe==0.6.1
     # via flake8
 mypy-extensions==0.4.3
     # via black
-packaging==21.2
+packaging==21.3
     # via
     #   dparse
     #   pytest
     #   safety
 pathspec==0.9.0
     # via black
-pbr==5.7.0
+pbr==5.8.0
     # via stevedore
 pep517==0.12.0
     # via pip-tools
@@ -74,7 +74,7 @@ pycodestyle==2.6.0
     # via flake8
 pyflakes==2.2.0
     # via flake8
-pyparsing==2.4.7
+pyparsing==3.0.6
     # via packaging
 pytest==6.2.5
     # via
@@ -106,7 +106,6 @@ safety==1.10.3
     # via -r requirements_dev.in
 six==1.16.0
     # via
-    #   bandit
     #   piprot
     #   python-dateutil
 smmap==5.0.0
@@ -122,7 +121,7 @@ tomli==1.2.2
     #   black
     #   coverage
     #   pep517
-typing-extensions==3.10.0.2
+typing-extensions==4.0.0
     # via
     #   black
     #   gitpython

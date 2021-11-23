@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from govuk_frontend_wtf.wtforms_widgets import (
+    GovCharacterCount,
     GovCheckboxesInput,
     GovCheckboxInput,
     GovDateInput,
@@ -196,6 +197,16 @@ class KitchenSinkForm(FlaskForm):
         widget=GovTextArea(),
         validators=[InputRequired(message="TextAreaField is required")],
         description="TextAreaField hint text",
+    )
+
+    charactercount_field = TextAreaField(
+        "CharacterCountField",
+        widget=GovCharacterCount(),
+        validators=[
+            InputRequired(message="CharacterCountField is required"),
+            Length(max=200, message="CharacterCountField must be 200 characters or fewer "),
+        ],
+        description="CharacterCountFieldHint",
     )
 
     boolean_field = BooleanField(
