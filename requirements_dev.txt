@@ -8,18 +8,18 @@ attrs==21.2.0
     # via pytest
 bandit==1.7.1
     # via -r requirements_dev.in
-black==21.11b1
+black==21.12b0
     # via -r requirements_dev.in
 certifi==2021.10.8
     # via requests
-charset-normalizer==2.0.7
+charset-normalizer==2.0.9
     # via requests
 click==8.0.3
     # via
     #   black
     #   pip-tools
     #   safety
-coverage[toml]==6.1.2
+coverage[toml]==6.2
     # via pytest-cov
 dparse==0.5.1
     # via safety
@@ -93,8 +93,6 @@ pyyaml==6.0
     # via
     #   bandit
     #   dparse
-regex==2021.11.10
-    # via black
 requests==2.26.0
     # via
     #   piprot
@@ -116,12 +114,12 @@ toml==0.10.2
     # via
     #   dparse
     #   pytest
-tomli==1.2.2
+tomli==1.2.3
     # via
     #   black
     #   coverage
     #   pep517
-typing-extensions==4.0.0
+typing-extensions==4.0.1
     # via
     #   black
     #   gitpython

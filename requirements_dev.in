@@ -1,5 +1,5 @@
 bandit==1.7.1
-black==21.11b1
+black==21.12b0
 freezegun==1.1.0
 hacking==4.1.0
 isort==5.10.1
