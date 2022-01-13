@@ -19,32 +19,32 @@
     <h1 class="govuk-heading-xl">Bank or building society account details</h1>
 
     <form action="" method="post" novalidate>
-        {{ form.csrf_token }}
-        
-        {{ form.name_on_the_account(params={
-          'spellcheck': false
-        }) }}
-        
-        {{ form.sort_code(params={
-          'classes': 'govuk-input--width-5',
-          'inputmode': 'numeric',
-          'pattern': '[0-9]*',
-          'spellcheck': false
-        }) }}
-        
-        {{ form.account_number(params={
-          'classes': 'govuk-input--width-10',
-          'inputmode': 'numeric',
-          'pattern': '[0-9]*',
-          'spellcheck': false
-        }) }}
-        
-        {{ form.roll_number(params={
-          'classes': 'govuk-input--width-10',
-          'spellcheck': false
-        }) }}
-        
-        {{ form.submit }}
+      {{ form.csrf_token }}
+
+      {{ form.name_on_the_account(params={
+        'spellcheck': false
+      }) }}
+
+      {{ form.sort_code(params={
+        'classes': 'govuk-input--width-5',
+        'inputmode': 'numeric',
+        'pattern': '[0-9]*',
+        'spellcheck': false
+      }) }}
+
+      {{ form.account_number(params={
+        'classes': 'govuk-input--width-10',
+        'inputmode': 'numeric',
+        'pattern': '[0-9]*',
+        'spellcheck': false
+      }) }}
+
+      {{ form.roll_number(params={
+        'classes': 'govuk-input--width-10',
+        'spellcheck': false
+      }) }}
+
+      {{ form.submit }}
     </form>
   </div>
 </div>
