@@ -59,7 +59,7 @@ webassets==2.0
     # via flask-assets
 werkzeug==2.0.2
     # via flask
-wtforms==3.0.0
+wtforms==3.0.1
     # via
     #   flask-wtf
     #   govuk-frontend-wtf

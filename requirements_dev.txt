@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_dev.in
 #
-attrs==21.2.0
+attrs==21.4.0
     # via pytest
 bandit==1.7.1
     # via -r requirements_dev.in
@@ -12,7 +12,7 @@ black==21.12b0
     # via -r requirements_dev.in
 certifi==2021.10.8
     # via requests
-charset-normalizer==2.0.9
+charset-normalizer==2.0.10
     # via requests
 click==8.0.3
     # via
@@ -33,7 +33,7 @@ freezegun==1.1.0
     # via -r requirements_dev.in
 gitdb==4.0.9
     # via gitpython
-gitpython==3.1.24
+gitpython==3.1.26
     # via bandit
 hacking==4.1.0
     # via -r requirements_dev.in
@@ -64,7 +64,7 @@ pip-tools==6.4.0
     # via -r requirements_dev.in
 piprot==0.9.11
     # via -r requirements_dev.in
-platformdirs==2.4.0
+platformdirs==2.4.1
     # via black
 pluggy==1.0.0
     # via pytest
@@ -93,7 +93,7 @@ pyyaml==6.0
     # via
     #   bandit
     #   dparse
-requests==2.26.0
+requests==2.27.1
     # via
     #   piprot
     #   requests-futures
@@ -120,12 +120,10 @@ tomli==1.2.3
     #   coverage
     #   pep517
 typing-extensions==4.0.1
-    # via
-    #   black
-    #   gitpython
-urllib3==1.26.7
+    # via black
+urllib3==1.26.8
     # via requests
-wheel==0.37.0
+wheel==0.37.1
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
