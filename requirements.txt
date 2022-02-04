@@ -10,7 +10,7 @@ click==8.0.3
     # via flask
 deepmerge==1.0.1
     # via govuk-frontend-wtf
-dnspython==2.1.0
+dnspython==2.2.0
     # via email-validator
 email_validator==1.1.3
     # via -r requirements.in
@@ -45,7 +45,7 @@ jinja2==3.0.3
     #   flask
     #   govuk-frontend-jinja
     #   govuk-frontend-wtf
-jsmin==3.0.0
+jsmin==3.0.1
     # via -r requirements.in
 markupsafe==2.0.1
     # via

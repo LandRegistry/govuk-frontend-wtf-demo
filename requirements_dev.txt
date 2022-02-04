@@ -6,20 +6,20 @@
 #
 attrs==21.4.0
     # via pytest
-bandit==1.7.1
+bandit==1.7.2
     # via -r requirements_dev.in
-black==21.12b0
+black==22.1.0
     # via -r requirements_dev.in
 certifi==2021.10.8
     # via requests
-charset-normalizer==2.0.10
+charset-normalizer==2.0.11
     # via requests
 click==8.0.3
     # via
     #   black
     #   pip-tools
     #   safety
-coverage[toml]==6.2
+coverage[toml]==6.3.1
     # via pytest-cov
 dparse==0.5.1
     # via safety
@@ -60,7 +60,7 @@ pep517==0.12.0
     # via pip-tools
 pep8-naming==0.11.1
     # via -r requirements_dev.in
-pip-tools==6.4.0
+pip-tools==6.5.0
     # via -r requirements_dev.in
 piprot==0.9.11
     # via -r requirements_dev.in
@@ -74,9 +74,9 @@ pycodestyle==2.6.0
     # via flake8
 pyflakes==2.2.0
     # via flake8
-pyparsing==3.0.6
+pyparsing==3.0.7
     # via packaging
-pytest==6.2.5
+pytest==7.0.0
     # via
     #   pytest-cov
     #   pytest-html
@@ -111,14 +111,13 @@ smmap==5.0.0
 stevedore==3.5.0
     # via bandit
 toml==0.10.2
-    # via
-    #   dparse
-    #   pytest
-tomli==1.2.3
+    # via dparse
+tomli==2.0.0
     # via
     #   black
     #   coverage
     #   pep517
+    #   pytest
 typing-extensions==4.0.1
     # via black
 urllib3==1.26.8
