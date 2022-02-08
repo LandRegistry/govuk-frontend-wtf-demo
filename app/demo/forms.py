@@ -303,6 +303,8 @@ class ConditionalRevealForm(FlaskForm):
     email_address = StringField(
         "Email address",
         widget=GovTextInput(),
+        # Set up the validation for each of the conditional fields with a custom RequiredIf validator
+        # This will mark this field as required if the how_prefer_contacted is set to email
         validators=[RequiredIf("how_prefer_contacted", "email", message="Enter an email address")],
     )
 
