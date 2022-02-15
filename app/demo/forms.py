@@ -30,6 +30,7 @@ from wtforms.fields import (
     TextAreaField,
 )
 from wtforms.validators import Email, EqualTo, InputRequired, Length, Optional, Regexp
+from app.demo.custom_validators import RequiredIf
 
 
 class BankDetailsForm(FlaskForm):
@@ -288,3 +289,35 @@ class KitchenSinkForm(FlaskForm):
     )
 
     submit_button = SubmitField("SubmitField", widget=GovSubmitInput())
+
+
+class ConditionalRevealForm(FlaskForm):
+    how_prefer_contacted = RadioField(
+        "How would you prefer to be contacted?",
+        widget=GovRadioInput(),
+        validators=[InputRequired(message="Choose how you would prefer to be contacted")],
+        choices=[("email", "Email"), ("phone", "Phone"), ("text_message", "Text message")],
+        description="Select one option.",
+    )
+
+    email_address = StringField(
+        "Email address",
+        widget=GovTextInput(),
+        # Set up the validation for each of the conditional fields with a custom RequiredIf validator
+        # This will mark this field as required if the how_prefer_contacted is set to email
+        validators=[RequiredIf("how_prefer_contacted", "email", message="Enter an email address")],
+    )
+
+    phone = StringField(
+        "Phone number",
+        widget=GovTextInput(),
+        validators=[RequiredIf("how_prefer_contacted", "phone", message="Enter a phone number")],
+    )
+
+    mobile_phone = StringField(
+        "Mobile phone number",
+        widget=GovTextInput(),
+        validators=[RequiredIf("how_prefer_contacted", "text_message", message="Enter a mobile phone number")],
+    )
+
+    submit = SubmitField("Continue", widget=GovSubmitInput())

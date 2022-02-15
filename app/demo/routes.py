@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, url_for
 
 from app.demo import bp
-from app.demo.forms import BankDetailsForm, CreateAccountForm, KitchenSinkForm
+from app.demo.forms import BankDetailsForm, CreateAccountForm, KitchenSinkForm, ConditionalRevealForm
 
 
 @bp.route("/forms/bank-details", methods=["GET", "POST"])
@@ -29,3 +29,12 @@ def kitchen_sink():
         flash("Form successfully submitted", "success")
         return redirect(url_for("main.index"))
     return render_template("kitchen_sink.html", form=form)
+
+
+@bp.route("/forms/conditional-reveal", methods=["GET", "POST"])
+def conditional_reveal():
+    form = ConditionalRevealForm()
+    if form.validate_on_submit():
+        flash("Form successfully submitted", "success")
+        return redirect(url_for("main.index"))
+    return render_template("conditional_reveal.html", form=form)
