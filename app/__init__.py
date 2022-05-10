@@ -41,7 +41,6 @@ def create_app(config_class=Config):
             "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='",
             "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
         ],
-        "img-src": ["data:", "'self'"],
     }
     talisman.init_app(app, content_security_policy=csp)
 
