@@ -5,7 +5,7 @@ rm -rf app/static/govuk-frontend*
 rm -rf app/static/VERSION.txt
 
 # Get new release distribution assets and move to static directory
-curl -L https://github.com/alphagov/govuk-frontend/releases/download/v4.0.0/release-v4.0.0.zip > govuk_frontend.zip
+curl -L https://github.com/alphagov/govuk-frontend/releases/download/v4.0.1/release-v4.0.1.zip > govuk_frontend.zip
 unzip -o govuk_frontend.zip -d app/static
 mv app/static/assets/* app/static
 
