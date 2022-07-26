@@ -1,7 +1,7 @@
 from flask import flash, redirect, render_template, url_for
 
 from app.demo import bp
-from app.demo.forms import BankDetailsForm, CreateAccountForm, KitchenSinkForm, ConditionalRevealForm
+from app.demo.forms import BankDetailsForm, ConditionalRevealForm, CreateAccountForm, KitchenSinkForm
 
 
 @bp.route("/forms/bank-details", methods=["GET", "POST"])

@@ -30,6 +30,7 @@ from wtforms.fields import (
     TextAreaField,
 )
 from wtforms.validators import Email, EqualTo, InputRequired, Length, Optional, Regexp
+
 from app.demo.custom_validators import RequiredIf
 
 
@@ -296,7 +297,11 @@ class ConditionalRevealForm(FlaskForm):
         "How would you prefer to be contacted?",
         widget=GovRadioInput(),
         validators=[InputRequired(message="Choose how you would prefer to be contacted")],
-        choices=[("email", "Email"), ("phone", "Phone"), ("text_message", "Text message")],
+        choices=[
+            ("email", "Email"),
+            ("phone", "Phone"),
+            ("text_message", "Text message"),
+        ],
         description="Select one option.",
     )
 
@@ -317,7 +322,13 @@ class ConditionalRevealForm(FlaskForm):
     mobile_phone = StringField(
         "Mobile phone number",
         widget=GovTextInput(),
-        validators=[RequiredIf("how_prefer_contacted", "text_message", message="Enter a mobile phone number")],
+        validators=[
+            RequiredIf(
+                "how_prefer_contacted",
+                "text_message",
+                message="Enter a mobile phone number",
+            )
+        ],
     )
 
     submit = SubmitField("Continue", widget=GovSubmitInput())
