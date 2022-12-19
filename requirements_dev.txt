@@ -39,7 +39,7 @@ hacking==5.0.0
     # via -r requirements_dev.in
 idna==3.4
     # via requests
-isort==5.11.2
+isort==5.11.3
     # via -r requirements_dev.in
 mccabe==0.6.1
     # via flake8
@@ -58,7 +58,7 @@ pep517==0.13.0
     # via build
 pep8-naming==0.13.2
     # via -r requirements_dev.in
-pip-tools==6.12.0
+pip-tools==6.12.1
     # via -r requirements_dev.in
 platformdirs==2.6.0
     # via black
