@@ -31,7 +31,7 @@ flask-wtf==1.1.1
     # via govuk-frontend-wtf
 govuk-frontend-jinja==2.5.0
     # via govuk-frontend-wtf
-govuk-frontend-wtf==2.2.0
+govuk-frontend-wtf==2.3.0
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
@@ -57,7 +57,7 @@ python-dotenv==0.21.1
     # via -r requirements.in
 webassets==2.0
     # via flask-assets
-werkzeug==2.2.2
+werkzeug==2.2.3
     # via flask
 wtforms==3.0.1
     # via
